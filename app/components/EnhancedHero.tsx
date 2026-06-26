@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight, Download, Linkedin, Mail, Github } from 'lucide-react'
+import { scrollToContact } from '@/app/utils/scroll'
 import {
   ParallaxBackground,
   FloatingElement,
@@ -11,6 +12,7 @@ import {
   GridBackground,
   DotPattern,
 } from './VisualEnhancements'
+import { HeroAsset } from './AssetRenderer'
 
 export default function EnhancedHero() {
   const containerVariants = {
@@ -144,14 +146,17 @@ export default function EnhancedHero() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
           >
-            <MagneticButton className="px-8 py-4 rounded-lg bg-primary hover:bg-primary/90 text-white font-bold flex items-center justify-center gap-2 transition-all duration-300 hover:shadow-glow">
+            <button
+              onClick={() => scrollToContact()}
+              className="px-8 py-4 rounded-lg bg-primary hover:bg-primary/90 text-white font-bold flex items-center justify-center gap-2 transition-all duration-300 hover:shadow-glow cursor-pointer"
+            >
               Start a Project <ArrowRight size={20} />
-            </MagneticButton>
+            </button>
             <motion.a
               href="#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 rounded-lg border border-primary/30 hover:bg-primary/10 text-white font-bold flex items-center justify-center gap-2 transition-all duration-300"
+              className="px-8 py-4 rounded-lg border border-primary/30 hover:bg-primary/10 text-white font-bold flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer"
             >
               Download Resume <Download size={20} />
             </motion.a>

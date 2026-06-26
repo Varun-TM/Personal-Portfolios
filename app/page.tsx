@@ -1,7 +1,7 @@
 import Header from './components/Header'
 import EnhancedHero from './components/EnhancedHero'
 import EnhancedAbout from './components/EnhancedAbout'
-import EnhancedExperience from './components/EnhancedExperience'
+import PremiumTimeline from './components/PremiumTimeline'
 import EnhancedProjects from './components/EnhancedProjects'
 import EnhancedSkills from './components/EnhancedSkills'
 import Achievements from './components/Achievements'
@@ -15,7 +15,7 @@ export default function Home() {
       <Header />
       <EnhancedHero />
       <EnhancedAbout />
-      <EnhancedExperience />
+      <PremiumTimeline />
       <EnhancedProjects />
       <EnhancedSkills />
       <Achievements />
