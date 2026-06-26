@@ -1,9 +1,9 @@
 import Header from './components/Header'
-import Hero from './components/Hero'
-import About from './components/About'
-import Experience from './components/Experience'
-import Projects from './components/Projects'
-import Skills from './components/Skills'
+import EnhancedHero from './components/EnhancedHero'
+import EnhancedAbout from './components/EnhancedAbout'
+import EnhancedExperience from './components/EnhancedExperience'
+import EnhancedProjects from './components/EnhancedProjects'
+import EnhancedSkills from './components/EnhancedSkills'
 import Achievements from './components/Achievements'
 import Education from './components/Education'
 import Contact from './components/Contact'
@@ -13,11 +13,11 @@ export default function Home() {
   return (
     <main className="w-full bg-background text-white overflow-x-hidden">
       <Header />
-      <Hero />
-      <About />
-      <Experience />
-      <Projects />
-      <Skills />
+      <EnhancedHero />
+      <EnhancedAbout />
+      <EnhancedExperience />
+      <EnhancedProjects />
+      <EnhancedSkills />
       <Achievements />
       <Education />
       <Contact />
