@@ -67,3 +67,7 @@ certs/
 # Logs
 logs/
 *.log
+
+# CMS runtime data (provided via Docker volumes, never from build context)
+data/
+public/uploads/

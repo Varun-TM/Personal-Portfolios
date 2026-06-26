@@ -4,7 +4,19 @@ import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Linkedin, Github, Send } from 'lucide-react'
 import { useState } from 'react'
 
-export default function Contact() {
+export default function Contact({ content = {} }: { content?: any }) {
+  const c = {
+    heading: "Let's Build Something Great",
+    intro:
+      "Looking to collaborate, discuss DevOps challenges, or explore new opportunities? I'm always interested in interesting projects and conversations.",
+    email: 'varun.t.manoharan@gmail.com',
+    phone: '+91 9539394437',
+    location: 'Thrissur, India',
+    linkedinUrl: 'https://linkedin.com/in/varun-t-m-5237b793',
+    githubUrl: 'https://github.com',
+    ...content,
+  }
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -36,19 +48,19 @@ export default function Contact() {
     {
       icon: Mail,
       title: 'Email',
-      value: 'varun.t.manoharan@gmail.com',
-      link: 'mailto:varun.t.manoharan@gmail.com',
+      value: c.email,
+      link: `mailto:${c.email}`,
     },
     {
       icon: Phone,
       title: 'Phone',
-      value: '+91 9539394437',
-      link: 'tel:+919539394437',
+      value: c.phone,
+      link: `tel:${c.phone.replace(/[^+\d]/g, '')}`,
     },
     {
       icon: MapPin,
       title: 'Location',
-      value: 'Thrissur, India',
+      value: c.location,
       link: '#',
     },
   ]
@@ -57,13 +69,13 @@ export default function Contact() {
     {
       icon: Linkedin,
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/varun-t-m-5237b793',
+      url: c.linkedinUrl,
       color: 'hover:text-blue-400',
     },
     {
       icon: Github,
       name: 'GitHub',
-      url: 'https://github.com',
+      url: c.githubUrl,
       color: 'hover:text-gray-300',
     },
   ]
@@ -106,11 +118,8 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">Let's Build Something Great</h2>
-          <p className="text-xl text-white/60 max-w-3xl mx-auto">
-            Looking to collaborate, discuss DevOps challenges, or explore new opportunities?
-            I'm always interested in interesting projects and conversations.
-          </p>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4">{c.heading}</h2>
+          <p className="text-xl text-white/60 max-w-3xl mx-auto">{c.intro}</p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">

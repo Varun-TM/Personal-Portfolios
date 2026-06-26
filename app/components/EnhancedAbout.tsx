@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Zap, Shield, Cpu, Rocket } from 'lucide-react'
 import {
   ScrollReveal,
   staggerContainerVariants,
@@ -10,30 +9,44 @@ import {
   TiltCard,
   BlurOverlay,
 } from './VisualEnhancements'
+import { getIcon } from '@/lib/icons'
 
-export default function EnhancedAbout() {
-  const values = [
-    {
-      icon: Cpu,
-      title: 'Automation First',
-      description: 'Infrastructure scales automatically. Manual work is a bug.',
-    },
-    {
-      icon: Shield,
-      title: 'Security by Design',
-      description: 'Defense mechanisms are foundational, not afterthoughts.',
-    },
-    {
-      icon: Rocket,
-      title: 'Velocity & Reliability',
-      description: 'Deploy with confidence. Fast deployments and high uptime go hand in hand.',
-    },
-    {
-      icon: Zap,
-      title: 'Cost Optimization',
-      description: 'Right-sized infrastructure that performs at scale without waste.',
-    },
-  ]
+export default function EnhancedAbout({ content = {} }: { content?: any }) {
+  const data = {
+    heading: 'Engineering Philosophy',
+    intro:
+      "Building reliable infrastructure isn't just about deploying applications. It's about creating systems that scale, secure platforms that protect, and automation that frees teams to focus on innovation.",
+    storyTitle: 'Building Cloud Platforms at Scale',
+    storyParagraphs: [
+      "Over 5 years, I've engineered infrastructure solutions for companies managing millions of requests daily. From migrating 50+ servers with zero downtime to architecting multi-tier systems, I focus on building platforms that businesses can rely on.",
+      'My approach: automate everything, monitor obsessively, and optimize relentlessly. Infrastructure code gets the same rigor as application code. Deployments should be boring. Incidents should be rare.',
+      'Specializing in AWS ecosystem, containerization, CI/CD pipelines, and infrastructure-as-code. I believe that great DevOps is invisible—it removes friction, reduces failure, and enables teams to ship faster.',
+    ],
+    image: '/AWS Cloud Graphic.png',
+    stats: [
+      { metric: '5+', label: 'Years' },
+      { metric: '50+', label: 'Servers' },
+      { metric: '99.9%', label: 'Uptime' },
+    ],
+    values: [
+      { icon: 'Cpu', title: 'Automation First', description: 'Infrastructure scales automatically. Manual work is a bug.' },
+      { icon: 'Shield', title: 'Security by Design', description: 'Defense mechanisms are foundational, not afterthoughts.' },
+      { icon: 'Rocket', title: 'Velocity & Reliability', description: 'Deploy with confidence. Fast deployments and high uptime go hand in hand.' },
+      { icon: 'Zap', title: 'Cost Optimization', description: 'Right-sized infrastructure that performs at scale without waste.' },
+    ],
+    impactTitle: 'Impact by Numbers',
+    impactMetrics: [
+      { metric: '25%', label: 'AWS Cost Reduction' },
+      { metric: '40%', label: 'Faster Deployments' },
+      { metric: '30%', label: 'Performance Improvement' },
+      { metric: '60%', label: 'Automation Coverage' },
+    ],
+    ...content,
+  }
+  const values = data.values
+  const storyParagraphs: string[] = data.storyParagraphs
+  const stats = data.stats
+  const impactMetrics = data.impactMetrics
 
   return (
     <section id="about" className="py-20 relative overflow-hidden">
@@ -57,14 +70,8 @@ export default function EnhancedAbout() {
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              Engineering Philosophy
-            </h2>
-            <p className="text-xl text-white/60 max-w-3xl mx-auto">
-              Building reliable infrastructure isn't just about deploying applications.
-              It's about creating systems that scale, secure platforms that protect, and
-              automation that frees teams to focus on innovation.
-            </p>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4">{data.heading}</h2>
+            <p className="text-xl text-white/60 max-w-3xl mx-auto">{data.intro}</p>
           </div>
         </ScrollReveal>
 
@@ -72,31 +79,21 @@ export default function EnhancedAbout() {
           {/* Left Column - Story */}
           <ScrollReveal blur={15}>
             <div>
-              <h3 className="text-3xl font-bold mb-6">Building Cloud Platforms at Scale</h3>
-              <p className="text-white/70 mb-4 leading-relaxed">
-                Over 5 years, I've engineered infrastructure solutions for companies managing
-                millions of requests daily. From migrating 50+ servers with zero downtime to
-                architecting multi-tier systems, I focus on building platforms that businesses
-                can rely on.
-              </p>
-              <p className="text-white/70 mb-4 leading-relaxed">
-                My approach: automate everything, monitor obsessively, and optimize
-                relentlessly. Infrastructure code gets the same rigor as application code.
-                Deployments should be boring. Incidents should be rare.
-              </p>
-              <p className="text-white/70 mb-6 leading-relaxed">
-                Specializing in AWS ecosystem, containerization, CI/CD pipelines, and
-                infrastructure-as-code. I believe that great DevOps is invisible—it removes
-                friction, reduces failure, and enables teams to ship faster.
-              </p>
+              <h3 className="text-3xl font-bold mb-6">{data.storyTitle}</h3>
+              {storyParagraphs.map((para, i) => (
+                <p
+                  key={i}
+                  className={`text-white/70 leading-relaxed ${
+                    i === storyParagraphs.length - 1 ? 'mb-6' : 'mb-4'
+                  }`}
+                >
+                  {para}
+                </p>
+              ))}
 
               {/* Stats Grid */}
               <div className="grid grid-cols-3 gap-4">
-                {[
-                  { metric: '5+', label: 'Years' },
-                  { metric: '50+', label: 'Servers' },
-                  { metric: '99.9%', label: 'Uptime' },
-                ].map((item, i) => (
+                {stats.map((item: any, i: number) => (
                   <TiltCard
                     key={i}
                     className="glass rounded-lg p-4 text-center hover:border-primary/50 transition-all duration-300"
@@ -138,7 +135,7 @@ export default function EnhancedAbout() {
                 <div className="relative glass rounded-2xl p-4 border border-primary/20 overflow-hidden">
                   <div className="relative z-10">
                     <img
-                      src="/AWS Cloud Graphic.png"
+                      src={data.image}
                       alt="AWS Cloud Architecture"
                       className="w-full h-auto rounded-lg"
                       loading="lazy"
@@ -190,7 +187,9 @@ export default function EnhancedAbout() {
           viewport={{ once: true }}
           className="space-y-4"
         >
-          {values.map((value, index) => (
+          {values.map((value: any, index: number) => {
+            const Icon = getIcon(value.icon)
+            return (
             <motion.div
               key={value.title}
               variants={staggerItemVariants}
@@ -201,7 +200,7 @@ export default function EnhancedAbout() {
                     whileHover={{ scale: 1.1, rotate: 10 }}
                     className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/30 transition-colors"
                   >
-                    <value.icon className="text-primary" size={24} />
+                    <Icon className="text-primary" size={24} />
                   </motion.div>
                   <div>
                     <h4 className="font-bold text-lg mb-2">{value.title}</h4>
@@ -210,7 +209,8 @@ export default function EnhancedAbout() {
                 </div>
               </TiltCard>
             </motion.div>
-          ))}
+            )
+          })}
         </motion.div>
 
         {/* Impact Metrics */}
@@ -246,14 +246,9 @@ export default function EnhancedAbout() {
               }}
             />
 
-            <h3 className="text-2xl font-bold mb-8 relative z-10">Impact by Numbers</h3>
+            <h3 className="text-2xl font-bold mb-8 relative z-10">{data.impactTitle}</h3>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 relative z-10">
-              {[
-                { metric: '25%', label: 'AWS Cost Reduction' },
-                { metric: '40%', label: 'Faster Deployments' },
-                { metric: '30%', label: 'Performance Improvement' },
-                { metric: '60%', label: 'Automation Coverage' },
-              ].map((item, i) => (
+              {impactMetrics.map((item: any, i: number) => (
                 <motion.div
                   key={i}
                   whileHover={{ scale: 1.05, y: -5 }}

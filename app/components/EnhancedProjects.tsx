@@ -49,7 +49,20 @@ const projects = [
   },
 ]
 
-export default function EnhancedProjects() {
+export default function EnhancedProjects({ content = {} }: { content?: any }) {
+  const data = {
+    heading: 'Featured Projects',
+    intro:
+      'Case studies of infrastructure challenges solved, systems scaled, and deployments accelerated.',
+    architectureTitle: 'Infrastructure Architecture',
+    architectureImage: '/Infrastructure Architecture.png',
+    architectureDescription:
+      'Multi-tier cloud architecture with load balancing, auto-scaling, and containerized deployment. Optimized for performance, reliability, and cost efficiency.',
+    ...content,
+  }
+  const items =
+    Array.isArray(data.items) && data.items.length ? data.items : projects
+
   return (
     <section id="projects" className="py-20 relative overflow-hidden">
       {/* Section background */}
@@ -71,11 +84,8 @@ export default function EnhancedProjects() {
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">Featured Projects</h2>
-            <p className="text-xl text-white/60 max-w-3xl mx-auto">
-              Case studies of infrastructure challenges solved, systems scaled,
-              and deployments accelerated.
-            </p>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4">{data.heading}</h2>
+            <p className="text-xl text-white/60 max-w-3xl mx-auto">{data.intro}</p>
           </div>
         </ScrollReveal>
 
@@ -87,7 +97,7 @@ export default function EnhancedProjects() {
           viewport={{ once: true }}
           className="space-y-8"
         >
-          {projects.map((project, index) => (
+          {items.map((project: any, index: number) => (
             <motion.div key={project.title} variants={staggerItemVariants}>
               <TiltCard className="glass rounded-xl border border-primary/20 overflow-hidden hover:border-primary/50 transition-all duration-300 group">
                 <div className="grid lg:grid-cols-2 gap-8 p-8 relative">
@@ -120,7 +130,7 @@ export default function EnhancedProjects() {
 
                     {/* Technologies */}
                     <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech) => (
+                      {project.technologies.map((tech: string) => (
                         <motion.span
                           key={tech}
                           whileHover={{ scale: 1.05, y: -2 }}
@@ -136,7 +146,7 @@ export default function EnhancedProjects() {
                   <div className="relative z-10 flex flex-col justify-between">
                     {/* Metrics Grid */}
                     <div className="grid grid-cols-3 gap-4 mb-6">
-                      {project.metrics.map((metric, i) => (
+                      {project.metrics.map((metric: any, i: number) => (
                         <motion.div
                           key={i}
                           whileHover={{ scale: 1.05, y: -5 }}
@@ -198,7 +208,7 @@ export default function EnhancedProjects() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10" />
 
               <div className="relative z-10">
-                <h3 className="text-2xl font-bold mb-6">Infrastructure Architecture</h3>
+                <h3 className="text-2xl font-bold mb-6">{data.architectureTitle}</h3>
 
                 <motion.div
                   animate={{
@@ -212,16 +222,15 @@ export default function EnhancedProjects() {
                   className="rounded-lg overflow-hidden border border-primary/20"
                 >
                   <img
-                    src="/Infrastructure Architecture.png"
-                    alt="Infrastructure Architecture Diagram"
+                    src={data.architectureImage}
+                    alt={data.architectureTitle}
                     className="w-full h-auto"
                     loading="lazy"
                   />
                 </motion.div>
 
                 <p className="text-white/70 mt-6 leading-relaxed">
-                  Multi-tier cloud architecture with load balancing, auto-scaling, and
-                  containerized deployment. Optimized for performance, reliability, and cost efficiency.
+                  {data.architectureDescription}
                 </p>
               </div>
             </div>

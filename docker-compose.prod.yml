@@ -16,6 +16,13 @@ services:
       - NODE_ENV=production
       - NEXT_PUBLIC_SITE_NAME=${NEXT_PUBLIC_SITE_NAME:-Varun TM}
       - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL:-https://yourdomain.com}
+      # --- Admin CMS credentials (required for /admin) ---
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:?set ADMIN_PASSWORD in .env}
+      - AUTH_SECRET=${AUTH_SECRET:?set AUTH_SECRET in .env (min 16 chars)}
+    volumes:
+      # Persist editable content + uploaded images across rebuilds/restarts
+      - portfolio_data:/app/data
+      - portfolio_uploads:/app/public/uploads
     healthcheck:
       test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000"]
       interval: 30s
@@ -66,4 +73,9 @@ networks:
 # Named volumes for persistence
 volumes:
   nginx-cache:
+    driver: local
+  # CMS content + uploads persistence
+  portfolio_data:
+    driver: local
+  portfolio_uploads:
     driver: local

@@ -1,60 +1,49 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Cloud, Database, Code, GitBranch, Shield, BarChart3 } from 'lucide-react'
 import {
   ScrollReveal,
   staggerContainerVariants,
   staggerItemVariants,
   TiltCard,
 } from './VisualEnhancements'
+import { getIcon } from '@/lib/icons'
 
 const skillCategories = [
-  {
-    icon: Cloud,
-    title: 'Cloud & AWS',
-    skills: ['EC2', 'S3', 'RDS', 'Lambda', 'CloudFront', 'ALB/NLB', 'VPC', 'IAM'],
-    image: '/AWS Cloud Graphic.png',
-    color: 'from-primary/20 to-primary/5',
-  },
-  {
-    icon: Code,
-    title: 'Infrastructure as Code',
-    skills: ['Terraform', 'Ansible', 'Docker', 'Kubernetes', 'ECS', 'CloudFormation'],
-    image: '/Automation Artwork.png',
-    color: 'from-highlight/20 to-highlight/5',
-  },
-  {
-    icon: BarChart3,
-    title: 'Monitoring & Observability',
-    skills: ['Prometheus', 'Grafana', 'Nagios', 'CloudWatch', 'ELK Stack', 'Datadog'],
-    image: '/Monitoring Dashboard.png',
-    color: 'from-accent/20 to-accent/5',
-  },
-  {
-    icon: Database,
-    title: 'Databases',
-    skills: ['MySQL', 'MongoDB', 'MS SQL', 'Aurora', 'Mongo Atlas', 'RDS'],
-    image: '/Linux Engineering.png',
-    color: 'from-primary/20 to-primary/5',
-  },
-  {
-    icon: GitBranch,
-    title: 'CI/CD & DevOps',
-    skills: ['GitHub Actions', 'Jenkins', 'BitBucket', 'Docker Registry', 'Kubernetes'],
-    image: '/Kubernetes Artwork.png',
-    color: 'from-highlight/20 to-highlight/5',
-  },
-  {
-    icon: Shield,
-    title: 'Security & Networking',
-    skills: ['AWS WAF', 'VPC Security', 'SSL/TLS', 'DNS', 'VPN', 'Firewalls'],
-    image: '/Networking.png',
-    color: 'from-accent/20 to-accent/5',
-  },
+  { icon: 'Cloud', title: 'Cloud & AWS', skills: ['EC2', 'S3', 'RDS', 'Lambda', 'CloudFront', 'ALB/NLB', 'VPC', 'IAM'], image: '/AWS Cloud Graphic.png', color: 'from-primary/20 to-primary/5' },
+  { icon: 'Code', title: 'Infrastructure as Code', skills: ['Terraform', 'Ansible', 'Docker', 'Kubernetes', 'ECS', 'CloudFormation'], image: '/Automation Artwork.png', color: 'from-highlight/20 to-highlight/5' },
+  { icon: 'BarChart3', title: 'Monitoring & Observability', skills: ['Prometheus', 'Grafana', 'Nagios', 'CloudWatch', 'ELK Stack', 'Datadog'], image: '/Monitoring Dashboard.png', color: 'from-accent/20 to-accent/5' },
+  { icon: 'Database', title: 'Databases', skills: ['MySQL', 'MongoDB', 'MS SQL', 'Aurora', 'Mongo Atlas', 'RDS'], image: '/Linux Engineering.png', color: 'from-primary/20 to-primary/5' },
+  { icon: 'GitBranch', title: 'CI/CD & DevOps', skills: ['GitHub Actions', 'Jenkins', 'BitBucket', 'Docker Registry', 'Kubernetes'], image: '/Kubernetes Artwork.png', color: 'from-highlight/20 to-highlight/5' },
+  { icon: 'Shield', title: 'Security & Networking', skills: ['AWS WAF', 'VPC Security', 'SSL/TLS', 'DNS', 'VPN', 'Firewalls'], image: '/Networking.png', color: 'from-accent/20 to-accent/5' },
 ]
 
-export default function EnhancedSkills() {
+const extraSectionsDefault = [
+  { title: 'Operating Systems', items: ['Ubuntu', 'CentOS', 'AlmaLinux', 'CloudLinux', 'Windows', 'RHEL'] },
+  { title: 'Web Servers', items: ['Nginx', 'Apache', 'Litespeed'] },
+  { title: 'Scripting Languages', items: ['Python', 'Bash', 'Shell', 'Go', 'JavaScript'] },
+]
+
+export default function EnhancedSkills({ content = {} }: { content?: any }) {
+  const data = {
+    heading: 'Technical Stack',
+    intro:
+      'Comprehensive expertise across cloud platforms, infrastructure automation, and modern DevOps practices.',
+    summaryTitle: 'Expertise Summary',
+    summaryParagraphs: [
+      'Deep expertise in designing and managing cloud infrastructure at scale. Proven ability to architect solutions that prioritize reliability, security, and cost efficiency. Strong focus on automation, infrastructure-as-code, and operational excellence.',
+      'Proficient in containerization, orchestration, and modern DevOps practices. Experienced in implementing comprehensive monitoring, logging, and incident response strategies. Dedicated to continuous learning and staying current with emerging cloud technologies and best practices.',
+    ],
+    ...content,
+  }
+  const categories =
+    Array.isArray(data.categories) && data.categories.length ? data.categories : skillCategories
+  const extraSections =
+    Array.isArray(data.extraSections) && data.extraSections.length
+      ? data.extraSections
+      : extraSectionsDefault
+  const summaryParagraphs: string[] = data.summaryParagraphs
+
   return (
     <section id="skills" className="py-20 relative overflow-hidden">
       {/* Section background */}
@@ -88,11 +77,8 @@ export default function EnhancedSkills() {
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">Technical Stack</h2>
-            <p className="text-xl text-white/60 max-w-3xl mx-auto">
-              Comprehensive expertise across cloud platforms, infrastructure automation,
-              and modern DevOps practices.
-            </p>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4">{data.heading}</h2>
+            <p className="text-xl text-white/60 max-w-3xl mx-auto">{data.intro}</p>
           </div>
         </ScrollReveal>
 
@@ -104,7 +90,9 @@ export default function EnhancedSkills() {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
         >
-          {skillCategories.map((category, index) => (
+          {categories.map((category: any, index: number) => {
+            const Icon = getIcon(category.icon)
+            return (
             <motion.div key={category.title} variants={staggerItemVariants}>
               <TiltCard
                 className={`glass rounded-xl p-6 border border-primary/20 hover:border-primary/50 transition-all duration-300 group h-full relative overflow-hidden`}
@@ -129,14 +117,14 @@ export default function EnhancedSkills() {
                       whileHover={{ rotate: 10, scale: 1.1 }}
                       className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/30 transition-colors"
                     >
-                      <category.icon className="text-primary" size={24} />
+                      <Icon className="text-primary" size={24} />
                     </motion.div>
                     <h3 className="font-bold text-lg">{category.title}</h3>
                   </div>
 
                   {/* Skills */}
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {category.skills.map((skill) => (
+                    {category.skills.map((skill: string) => (
                       <motion.span
                         key={skill}
                         whileHover={{ scale: 1.08, y: -2 }}
@@ -171,16 +159,13 @@ export default function EnhancedSkills() {
                 </div>
               </TiltCard>
             </motion.div>
-          ))}
+            )
+          })}
         </motion.div>
 
         {/* Additional Skills Sections */}
         <div className="space-y-6">
-          {[
-            { title: 'Operating Systems', items: ['Ubuntu', 'CentOS', 'AlmaLinux', 'CloudLinux', 'Windows', 'RHEL'] },
-            { title: 'Web Servers', items: ['Nginx', 'Apache', 'Litespeed'] },
-            { title: 'Scripting Languages', items: ['Python', 'Bash', 'Shell', 'Go', 'JavaScript'] },
-          ].map((section, index) => (
+          {extraSections.map((section: any, index: number) => (
             <ScrollReveal key={section.title} delay={0.1 + index * 0.1}>
               <motion.div
                 animate={{
@@ -211,7 +196,7 @@ export default function EnhancedSkills() {
 
                 <h3 className="font-bold text-lg mb-4 relative z-10">{section.title}</h3>
                 <div className="flex flex-wrap gap-3 relative z-10">
-                  {section.items.map((item) => (
+                  {section.items.map((item: string) => (
                     <motion.span
                       key={item}
                       whileHover={{ scale: 1.05, y: -2 }}
@@ -256,17 +241,17 @@ export default function EnhancedSkills() {
             />
 
             <div className="relative z-10">
-              <h3 className="text-2xl font-bold mb-4">Expertise Summary</h3>
-              <p className="text-white/70 leading-relaxed mb-4">
-                Deep expertise in designing and managing cloud infrastructure at scale. Proven ability to architect
-                solutions that prioritize reliability, security, and cost efficiency. Strong focus on automation,
-                infrastructure-as-code, and operational excellence.
-              </p>
-              <p className="text-white/70 leading-relaxed">
-                Proficient in containerization, orchestration, and modern DevOps practices. Experienced in implementing
-                comprehensive monitoring, logging, and incident response strategies. Dedicated to continuous learning and
-                staying current with emerging cloud technologies and best practices.
-              </p>
+              <h3 className="text-2xl font-bold mb-4">{data.summaryTitle}</h3>
+              {summaryParagraphs.map((para, i) => (
+                <p
+                  key={i}
+                  className={`text-white/70 leading-relaxed ${
+                    i === summaryParagraphs.length - 1 ? '' : 'mb-4'
+                  }`}
+                >
+                  {para}
+                </p>
+              ))}
             </div>
           </motion.div>
         </ScrollReveal>

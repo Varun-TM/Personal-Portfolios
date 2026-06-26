@@ -16,9 +16,13 @@ services:
       - NODE_ENV=production
       - NEXT_PUBLIC_SITE_NAME=${NEXT_PUBLIC_SITE_NAME:-Varun TM}
       - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+      # --- Admin CMS credentials (required for /admin) ---
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:?set ADMIN_PASSWORD in .env}
+      - AUTH_SECRET=${AUTH_SECRET:?set AUTH_SECRET in .env (min 16 chars)}
     volumes:
-      # Mount .next directory for hot reloading (optional, for development)
-      # - ./.next:/app/.next
+      # Persist editable content + uploaded images across rebuilds/restarts
+      - portfolio_data:/app/data
+      - portfolio_uploads:/app/public/uploads
       - /app/node_modules
       - /app/.next
     healthcheck:
@@ -59,4 +63,9 @@ networks:
 # Volumes (if needed for persistence)
 volumes:
   node_modules:
+    driver: local
+  # CMS content + uploads persistence
+  portfolio_data:
+    driver: local
+  portfolio_uploads:
     driver: local

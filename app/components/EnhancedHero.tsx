@@ -12,9 +12,23 @@ import {
   GridBackground,
   DotPattern,
 } from './VisualEnhancements'
-import { HeroAsset } from './AssetRenderer'
 
-export default function EnhancedHero() {
+export default function EnhancedHero({ content = {} }: { content?: any }) {
+  const c = {
+    badge: '✨ Senior Cloud & DevOps Engineer',
+    headingLine1: 'Building Infrastructure',
+    headingAccent: 'at Scale',
+    subheading:
+      '5+ years architecting reliable cloud infrastructure, automating deployments, and delivering production-grade solutions that scale to millions of requests. AWS specialist. Kubernetes expert. Infrastructure-as-code advocate.',
+    primaryCtaLabel: 'Start a Project',
+    resumeLabel: 'Download Resume',
+    resumeUrl: '#contact',
+    linkedinUrl: 'https://linkedin.com/in/varun-t-m-5237b793',
+    email: 'varun.t.manoharan@gmail.com',
+    githubUrl: 'https://github.com',
+    ...content,
+  }
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -115,17 +129,17 @@ export default function EnhancedHero() {
               }}
               className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/30 text-primary text-sm font-medium mb-6 backdrop-blur-sm"
             >
-              ✨ Senior Cloud & DevOps Engineer
+              {c.badge}
             </motion.div>
           </motion.div>
 
           {/* Main heading with animated gradient */}
           <motion.div variants={itemVariants} className="mb-6">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
-              Building Infrastructure
+              {c.headingLine1}
               <br />
               <AnimatedGradientText
-                text="at Scale"
+                text={c.headingAccent}
                 colors={['#2563EB', '#06B6D4', '#7C3AED']}
               />
             </h1>
@@ -136,9 +150,7 @@ export default function EnhancedHero() {
             variants={itemVariants}
             className="text-xl text-white/70 max-w-2xl mx-auto mb-8 leading-relaxed"
           >
-            5+ years architecting reliable cloud infrastructure, automating deployments,
-            and delivering production-grade solutions that scale to millions of requests.
-            AWS specialist. Kubernetes expert. Infrastructure-as-code advocate.
+            {c.subheading}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -150,15 +162,15 @@ export default function EnhancedHero() {
               onClick={() => scrollToContact()}
               className="px-8 py-4 rounded-lg bg-primary hover:bg-primary/90 text-white font-bold flex items-center justify-center gap-2 transition-all duration-300 hover:shadow-glow cursor-pointer"
             >
-              Start a Project <ArrowRight size={20} />
+              {c.primaryCtaLabel} <ArrowRight size={20} />
             </button>
             <motion.a
-              href="#contact"
+              href={c.resumeUrl}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 rounded-lg border border-primary/30 hover:bg-primary/10 text-white font-bold flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer"
             >
-              Download Resume <Download size={20} />
+              {c.resumeLabel} <Download size={20} />
             </motion.a>
           </motion.div>
 
@@ -168,9 +180,9 @@ export default function EnhancedHero() {
             className="flex gap-6 justify-center mb-20"
           >
             {[
-              { icon: Linkedin, href: 'https://linkedin.com/in/varun-t-m-5237b793', label: 'LinkedIn' },
-              { icon: Mail, href: 'mailto:varun.t.manoharan@gmail.com', label: 'Email' },
-              { icon: Github, href: 'https://github.com', label: 'GitHub' },
+              { icon: Linkedin, href: c.linkedinUrl, label: 'LinkedIn' },
+              { icon: Mail, href: `mailto:${c.email}`, label: 'Email' },
+              { icon: Github, href: c.githubUrl, label: 'GitHub' },
             ].map((social, i) => (
               <motion.a
                 key={social.label}

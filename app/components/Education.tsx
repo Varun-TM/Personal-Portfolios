@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { BookOpen, Award, GraduationCap } from 'lucide-react'
 
-const education = [
+const defaultDegrees = [
   {
     degree: 'BTech',
     field: 'Computer Science and Engineering',
@@ -22,7 +22,7 @@ const education = [
   },
 ]
 
-const certifications = [
+const defaultCerts = [
   {
     name: 'AWS Certified Solutions Architect - Associate',
     issuer: 'Amazon Web Services',
@@ -31,7 +31,24 @@ const certifications = [
   },
 ]
 
-export default function Education() {
+export default function Education({ content = {} }: { content?: any }) {
+  const data = {
+    heading: 'Education & Certifications',
+    intro:
+      'Continuous learning and professional development through formal education and industry-recognized certifications.',
+    learningTitle: 'Continuous Learning',
+    learningText:
+      'Committed to staying current with evolving cloud technologies and DevOps practices. Regular participation in technical training, industry conferences, and hands-on experimentation with new tools and frameworks.',
+    learningAreas: ['Cloud Architecture', 'Kubernetes', 'Infrastructure Automation', 'Security'],
+    ...content,
+  }
+  const education =
+    Array.isArray(data.degrees) && data.degrees.length ? data.degrees : defaultDegrees
+  const certifications =
+    Array.isArray(data.certifications) && data.certifications.length
+      ? data.certifications
+      : defaultCerts
+  const learningAreas: string[] = data.learningAreas
   return (
     <section id="education" className="py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,11 +60,8 @@ export default function Education() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">Education & Certifications</h2>
-          <p className="text-xl text-white/60 max-w-3xl mx-auto">
-            Continuous learning and professional development through formal education
-            and industry-recognized certifications.
-          </p>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4">{data.heading}</h2>
+          <p className="text-xl text-white/60 max-w-3xl mx-auto">{data.intro}</p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
@@ -59,7 +73,7 @@ export default function Education() {
             </h3>
 
             <div className="space-y-6">
-              {education.map((edu, index) => (
+              {education.map((edu: any, index: number) => (
                 <motion.div
                   key={edu.university}
                   initial={{ opacity: 0, x: -40 }}
@@ -82,7 +96,7 @@ export default function Education() {
                   <p className="text-white/50 text-sm mb-4">{edu.location}</p>
 
                   <div className="flex flex-wrap gap-2">
-                    {edu.highlights.map((highlight) => (
+                    {edu.highlights.map((highlight: string) => (
                       <span
                         key={highlight}
                         className="px-2 py-1 rounded text-xs bg-primary/10 text-primary"
@@ -104,7 +118,7 @@ export default function Education() {
             </h3>
 
             <div className="space-y-6">
-              {certifications.map((cert, index) => (
+              {certifications.map((cert: any, index: number) => (
                 <motion.div
                   key={cert.name}
                   initial={{ opacity: 0, x: 40 }}
@@ -128,7 +142,7 @@ export default function Education() {
                   </p>
 
                   <div className="flex flex-wrap gap-2">
-                    {cert.skills.map((skill) => (
+                    {cert.skills.map((skill: string) => (
                       <span
                         key={skill}
                         className="px-3 py-1 rounded-full text-xs bg-accent/10 border border-accent/30 text-accent"
@@ -150,17 +164,13 @@ export default function Education() {
               >
                 <h4 className="font-bold text-lg mb-4 flex items-center gap-2">
                   <BookOpen className="text-highlight" size={20} />
-                  Continuous Learning
+                  {data.learningTitle}
                 </h4>
-                <p className="text-white/70 text-sm leading-relaxed mb-4">
-                  Committed to staying current with evolving cloud technologies and DevOps practices.
-                  Regular participation in technical training, industry conferences, and hands-on
-                  experimentation with new tools and frameworks.
-                </p>
+                <p className="text-white/70 text-sm leading-relaxed mb-4">{data.learningText}</p>
                 <div className="space-y-2">
                   <p className="text-sm text-white/60">Focus Areas:</p>
                   <div className="flex flex-wrap gap-2">
-                    {['Cloud Architecture', 'Kubernetes', 'Infrastructure Automation', 'Security'].map((area) => (
+                    {learningAreas.map((area: string) => (
                       <span key={area} className="px-2 py-1 rounded text-xs bg-highlight/10 text-highlight">
                         {area}
                       </span>

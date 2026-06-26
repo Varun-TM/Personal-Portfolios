@@ -33,10 +33,18 @@ RUN npm install --only=production
 # Copy built application from builder
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
+# Seed content (default site content read at runtime by the CMS)
+COPY --from=builder /app/content ./content
 
 # Create non-root user for security
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
+
+# Writable dirs for the no-DB CMS (mounted as volumes in compose).
+# Created and chowned so the non-root user can persist edits + uploads.
+RUN mkdir -p /app/data /app/public/uploads \
+  && chown -R nextjs:nodejs /app/data /app/public/uploads
+
 USER nextjs
 
 # Expose port

@@ -1,0 +1,245 @@
+{
+  "hero": {
+    "badge": "✨ Senior Cloud & DevOps Engineer",
+    "headingLine1": "Building Infrastructure",
+    "headingAccent": "at Scale",
+    "subheading": "5+ years architecting reliable cloud infrastructure, automating deployments, and delivering production-grade solutions that scale to millions of requests. AWS specialist. Kubernetes expert. Infrastructure-as-code advocate.",
+    "primaryCtaLabel": "Start a Project",
+    "resumeLabel": "Download Resume",
+    "resumeUrl": "#contact",
+    "linkedinUrl": "https://linkedin.com/in/varun-t-m-5237b793",
+    "email": "varun.t.manoharan@gmail.com",
+    "githubUrl": "https://github.com"
+  },
+  "about": {
+    "heading": "Engineering Philosophy",
+    "intro": "Building reliable infrastructure isn't just about deploying applications. It's about creating systems that scale, secure platforms that protect, and automation that frees teams to focus on innovation.",
+    "storyTitle": "Building Cloud Platforms at Scale",
+    "storyParagraphs": [
+      "Over 5 years, I've engineered infrastructure solutions for companies managing millions of requests daily. From migrating 50+ servers with zero downtime to architecting multi-tier systems, I focus on building platforms that businesses can rely on.",
+      "My approach: automate everything, monitor obsessively, and optimize relentlessly. Infrastructure code gets the same rigor as application code. Deployments should be boring. Incidents should be rare.",
+      "Specializing in AWS ecosystem, containerization, CI/CD pipelines, and infrastructure-as-code. I believe that great DevOps is invisible—it removes friction, reduces failure, and enables teams to ship faster."
+    ],
+    "image": "/AWS Cloud Graphic.png",
+    "stats": [
+      { "metric": "5+", "label": "Years" },
+      { "metric": "50+", "label": "Servers" },
+      { "metric": "99.9%", "label": "Uptime" }
+    ],
+    "values": [
+      { "icon": "Cpu", "title": "Automation First", "description": "Infrastructure scales automatically. Manual work is a bug." },
+      { "icon": "Shield", "title": "Security by Design", "description": "Defense mechanisms are foundational, not afterthoughts." },
+      { "icon": "Rocket", "title": "Velocity & Reliability", "description": "Deploy with confidence. Fast deployments and high uptime go hand in hand." },
+      { "icon": "Zap", "title": "Cost Optimization", "description": "Right-sized infrastructure that performs at scale without waste." }
+    ],
+    "impactTitle": "Impact by Numbers",
+    "impactMetrics": [
+      { "metric": "25%", "label": "AWS Cost Reduction" },
+      { "metric": "40%", "label": "Faster Deployments" },
+      { "metric": "30%", "label": "Performance Improvement" },
+      { "metric": "60%", "label": "Automation Coverage" }
+    ]
+  },
+  "experience": {
+    "heading": "Career Journey",
+    "intro": "5+ years of progressive experience building reliable infrastructure, leading teams, and delivering production-grade solutions at scale.",
+    "philosophyTitle": "Engineering Philosophy",
+    "philosophyText": "Throughout my journey from IT support to senior DevOps engineer, I've maintained a consistent focus on automation, reliability, and scalability. Every role has contributed to my expertise in building production-grade infrastructure that powers mission-critical systems. From leading teams to architecting cloud platforms, I bring a comprehensive understanding of the entire infrastructure lifecycle.",
+    "items": [
+      {
+        "role": "System Engineer L3",
+        "company": "Virtual Tech Gurus",
+        "location": "Coimbatore, India",
+        "period": "Dec 2025 – Present",
+        "description": "Managing end-to-end DevOps and Linux operations for product-based applications across dev, QA, staging, and production environments.",
+        "achievements": [
+          "L2/L3 troubleshooting and root cause analysis for Linux, application, CI/CD, and container issues",
+          "Implemented comprehensive monitoring using Prometheus, Grafana, and Nagios",
+          "Linux security hardening and access control implementation",
+          "Multi-tier application architecture support (LB, app, DB)"
+        ],
+        "technologies": ["Linux", "Jenkins", "Bitbucket", "Docker", "Prometheus", "Grafana", "Ansible", "Bash"],
+        "icon": "🔧",
+        "color": "from-primary/20 to-primary/5"
+      },
+      {
+        "role": "DevOps Engineer",
+        "company": "Nelux Technologies Pvt Ltd",
+        "location": "Remote",
+        "period": "Aug 2022 – Aug 2025",
+        "description": "Engineered and scaled AWS infrastructure powering production-critical systems with 99.9% uptime.",
+        "achievements": [
+          "25% reduction in AWS infrastructure costs through intelligent optimization",
+          "40% faster deployments via automated CI/CD pipelines",
+          "30% improvement in application performance through CloudFront optimization",
+          "50+ server migration with zero data loss",
+          "Deployed and managed Dockerized applications and Kubernetes orchestration"
+        ],
+        "technologies": ["AWS", "Terraform", "Docker", "Kubernetes", "GitHub Actions", "Jenkins", "Python", "Ansible"],
+        "icon": "☁️",
+        "color": "from-accent/20 to-accent/5"
+      },
+      {
+        "role": "Linux System Administrator",
+        "company": "Nelux Technologies Pvt Ltd",
+        "location": "Remote",
+        "period": "Sep 2021 – Aug 2022",
+        "description": "Led L3 infrastructure support and team troubleshooting across Linux and Windows platforms.",
+        "achievements": [
+          "98% customer satisfaction through rapid incident resolution",
+          "Proxmox virtualization cluster administration and optimization",
+          "Automated backup and disaster recovery solutions",
+          "System performance tuning and resource optimization",
+          "Defined and translated system requirements into robust infrastructure solutions"
+        ],
+        "technologies": ["Linux", "Windows", "Proxmox", "AWS", "Bash", "Python", "Virtualization"],
+        "icon": "🐧",
+        "color": "from-highlight/20 to-highlight/5"
+      },
+      {
+        "role": "L1 Support Engineer",
+        "company": "SineAlpha Informatics Pvt Ltd",
+        "location": "Remote",
+        "period": "Jan 2020 – Sep 2021",
+        "description": "Supported virtualization platforms and firewalls, ensuring smooth operation of client infrastructure.",
+        "achievements": [
+          "Virtualization platform management (Proxmox, Plesk, cPanel, AA Panel)",
+          "Firewall and security infrastructure support (FortiGate, Sophos)",
+          "Remote server administration for Windows and Linux servers",
+          "Mail relay applications and server upgrades with data security maintained",
+          "Assisted in server migrations and environment provisioning"
+        ],
+        "technologies": ["Proxmox", "Plesk", "cPanel", "FortiGate", "Sophos", "Linux", "Windows"],
+        "icon": "🛡️",
+        "color": "from-warning/20 to-warning/5"
+      },
+      {
+        "role": "IT FMS Engineer - Team Lead",
+        "company": "TOPSERV INFOTECH Pvt Ltd",
+        "location": "Remote",
+        "period": "Apr 2018 – Sep 2019",
+        "description": "Led Level 2 support for enterprise clients, minimizing downtime for business-critical applications.",
+        "achievements": [
+          "Provided technical leadership and guidance on best practices for system stability",
+          "Installed, configured, and securely maintained servers",
+          "Contributed to broader infrastructure modernization initiatives",
+          "Minimized downtime through proactive systems management",
+          "Led team in supporting enterprise-level infrastructure"
+        ],
+        "technologies": ["Enterprise Systems", "Server Administration", "Team Leadership", "Infrastructure Management"],
+        "icon": "👥",
+        "color": "from-success/20 to-success/5"
+      }
+    ]
+  },
+  "projects": {
+    "heading": "Featured Projects",
+    "intro": "Case studies of infrastructure challenges solved, systems scaled, and deployments accelerated.",
+    "items": [
+      {
+        "title": "AWS Infrastructure Optimization",
+        "category": "Cloud Architecture",
+        "description": "Architected and optimized a multi-tier AWS infrastructure serving mission-critical applications with 99.9% uptime.",
+        "metrics": [
+          { "value": 25, "label": "Cost Reduction", "suffix": "%" },
+          { "value": 99, "label": "Uptime", "suffix": ".9%" },
+          { "value": 30, "label": "Services", "suffix": "+" }
+        ],
+        "technologies": ["AWS", "Terraform", "Python", "CloudWatch"],
+        "image": "/Infrastructure Architecture.png"
+      },
+      {
+        "title": "CI/CD Pipeline Modernization",
+        "category": "DevOps Infrastructure",
+        "description": "Designed and deployed automated CI/CD pipelines using GitHub Actions and Jenkins for multi-language applications.",
+        "metrics": [
+          { "value": 40, "label": "Faster Deploys", "suffix": "%" },
+          { "value": 60, "label": "Manual Work Reduced", "suffix": "%" },
+          { "value": 100, "label": "Automated", "suffix": "%" }
+        ],
+        "technologies": ["GitHub Actions", "Jenkins", "Docker", "Kubernetes"],
+        "image": "/DevOps Workflow.png"
+      },
+      {
+        "title": "Large Scale Server Migration",
+        "category": "Infrastructure Migration",
+        "description": "Led seamless migration of 50+ servers and databases from legacy infrastructure to AWS with zero downtime.",
+        "metrics": [
+          { "value": 50, "label": "Servers Migrated", "suffix": "+" },
+          { "value": 0, "label": "Data Loss", "suffix": "" },
+          { "value": 4, "label": "Total Downtime", "suffix": "hrs" }
+        ],
+        "technologies": ["AWS", "Database Migration", "Networking", "Ansible"],
+        "image": "/Kubernetes Artwork.png"
+      }
+    ],
+    "architectureTitle": "Infrastructure Architecture",
+    "architectureImage": "/Infrastructure Architecture.png",
+    "architectureDescription": "Multi-tier cloud architecture with load balancing, auto-scaling, and containerized deployment. Optimized for performance, reliability, and cost efficiency."
+  },
+  "skills": {
+    "heading": "Technical Stack",
+    "intro": "Comprehensive expertise across cloud platforms, infrastructure automation, and modern DevOps practices.",
+    "categories": [
+      { "icon": "Cloud", "title": "Cloud & AWS", "skills": ["EC2", "S3", "RDS", "Lambda", "CloudFront", "ALB/NLB", "VPC", "IAM"], "image": "/AWS Cloud Graphic.png", "color": "from-primary/20 to-primary/5" },
+      { "icon": "Code", "title": "Infrastructure as Code", "skills": ["Terraform", "Ansible", "Docker", "Kubernetes", "ECS", "CloudFormation"], "image": "/Automation Artwork.png", "color": "from-highlight/20 to-highlight/5" },
+      { "icon": "BarChart3", "title": "Monitoring & Observability", "skills": ["Prometheus", "Grafana", "Nagios", "CloudWatch", "ELK Stack", "Datadog"], "image": "/Monitoring Dashboard.png", "color": "from-accent/20 to-accent/5" },
+      { "icon": "Database", "title": "Databases", "skills": ["MySQL", "MongoDB", "MS SQL", "Aurora", "Mongo Atlas", "RDS"], "image": "/Linux Engineering.png", "color": "from-primary/20 to-primary/5" },
+      { "icon": "GitBranch", "title": "CI/CD & DevOps", "skills": ["GitHub Actions", "Jenkins", "BitBucket", "Docker Registry", "Kubernetes"], "image": "/Kubernetes Artwork.png", "color": "from-highlight/20 to-highlight/5" },
+      { "icon": "Shield", "title": "Security & Networking", "skills": ["AWS WAF", "VPC Security", "SSL/TLS", "DNS", "VPN", "Firewalls"], "image": "/Networking.png", "color": "from-accent/20 to-accent/5" }
+    ],
+    "extraSections": [
+      { "title": "Operating Systems", "items": ["Ubuntu", "CentOS", "AlmaLinux", "CloudLinux", "Windows", "RHEL"] },
+      { "title": "Web Servers", "items": ["Nginx", "Apache", "Litespeed"] },
+      { "title": "Scripting Languages", "items": ["Python", "Bash", "Shell", "Go", "JavaScript"] }
+    ],
+    "summaryTitle": "Expertise Summary",
+    "summaryParagraphs": [
+      "Deep expertise in designing and managing cloud infrastructure at scale. Proven ability to architect solutions that prioritize reliability, security, and cost efficiency. Strong focus on automation, infrastructure-as-code, and operational excellence.",
+      "Proficient in containerization, orchestration, and modern DevOps practices. Experienced in implementing comprehensive monitoring, logging, and incident response strategies. Dedicated to continuous learning and staying current with emerging cloud technologies and best practices."
+    ]
+  },
+  "achievements": {
+    "heading": "Key Achievements",
+    "intro": "Measurable impact across infrastructure optimization, automation, and system reliability.",
+    "counters": [
+      { "icon": "TrendingUp", "metric": 25, "label": "AWS Cost Reduction" },
+      { "icon": "Package", "metric": 40, "label": "Faster Deployments" },
+      { "icon": "Users", "metric": 50, "label": "Servers Migrated" },
+      { "icon": "Award", "metric": 5, "label": "Years Experience" }
+    ],
+    "accomplishmentsTitle": "Major Accomplishments",
+    "accomplishments": [
+      { "title": "Infrastructure Cost Optimization", "items": ["Reduced AWS infrastructure costs by 25% through intelligent EC2 right-sizing", "Optimized CloudFront delivery paths for 30% latency reduction", "Implemented reserved instances and auto-scaling cost controls"] },
+      { "title": "Deployment & Performance", "items": ["Increased deployment speed by 40% via automated CI/CD pipelines", "Implemented GitHub Actions and Jenkins for multi-language applications", "Achieved 99.9% uptime for mission-critical systems"] },
+      { "title": "Infrastructure & Scale", "items": ["Led seamless migration of 50+ servers and databases with zero data loss", "Designed multi-tier application architecture (LB, app, DB)", "Managed 200+ cloud resources across multiple environments"] },
+      { "title": "Automation & Efficiency", "items": ["Reduced manual operational overhead by 60% through automation", "Developed Python and Bash scripts for infrastructure provisioning", "Implemented infrastructure-as-code with 50% setup time reduction"] }
+    ],
+    "securityTitle": "Security & Compliance Initiatives",
+    "securityText": "Enhanced cloud security and compliance by enforcing AWS WAF rules, implementing VPNs, and securing VPC networking policies. Implemented Linux security hardening, access controls, and firewall rules for production environments.",
+    "securityTags": ["AWS WAF", "VPC Security", "SSL/TLS", "Access Control", "Firewall Rules", "VPN Tunnels", "IAM Policies", "Hardening"]
+  },
+  "education": {
+    "heading": "Education & Certifications",
+    "intro": "Continuous learning and professional development through formal education and industry-recognized certifications.",
+    "degrees": [
+      { "degree": "BTech", "field": "Computer Science and Engineering", "university": "Calicut University", "location": "Thrissur, India", "year": "2012 – 2016", "highlights": ["Core CS fundamentals", "Data structures and algorithms"] },
+      { "degree": "BTech", "field": "Computer Science and Engineering", "university": "Capital University", "location": "Jharkhand, India", "year": "2022", "highlights": ["Advanced learning", "Specialization in modern tech"] }
+    ],
+    "certifications": [
+      { "name": "AWS Certified Solutions Architect - Associate", "issuer": "Amazon Web Services", "description": "Validated expertise in designing scalable, highly available, and fault-tolerant systems on AWS", "skills": ["AWS Architecture", "Cloud Design", "Infrastructure Planning", "Cost Optimization"] }
+    ],
+    "learningTitle": "Continuous Learning",
+    "learningText": "Committed to staying current with evolving cloud technologies and DevOps practices. Regular participation in technical training, industry conferences, and hands-on experimentation with new tools and frameworks.",
+    "learningAreas": ["Cloud Architecture", "Kubernetes", "Infrastructure Automation", "Security"]
+  },
+  "contact": {
+    "heading": "Let's Build Something Great",
+    "intro": "Looking to collaborate, discuss DevOps challenges, or explore new opportunities? I'm always interested in interesting projects and conversations.",
+    "email": "varun.t.manoharan@gmail.com",
+    "phone": "+91 9539394437",
+    "location": "Thrissur, India",
+    "linkedinUrl": "https://linkedin.com/in/varun-t-m-5237b793",
+    "githubUrl": "https://github.com"
+  }
+}

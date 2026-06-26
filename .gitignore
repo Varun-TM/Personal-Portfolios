@@ -35,3 +35,7 @@ yarn-error.log*
 
 # OS
 Thumbs.db
+
+# CMS runtime data (persisted in Docker volumes, not in git)
+/data/
+/public/uploads/

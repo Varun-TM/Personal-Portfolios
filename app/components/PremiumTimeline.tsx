@@ -92,7 +92,19 @@ const experiences = [
   },
 ]
 
-export default function PremiumTimeline() {
+export default function PremiumTimeline({ content = {} }: { content?: any }) {
+  const data = {
+    heading: 'Career Journey',
+    intro:
+      '5+ years of progressive experience building reliable infrastructure, leading teams, and delivering production-grade solutions at scale.',
+    philosophyTitle: 'Engineering Philosophy',
+    philosophyText:
+      "Throughout my journey from IT support to senior DevOps engineer, I've maintained a consistent focus on automation, reliability, and scalability. Every role has contributed to my expertise in building production-grade infrastructure that powers mission-critical systems. From leading teams to architecting cloud platforms, I bring a comprehensive understanding of the entire infrastructure lifecycle.",
+    ...content,
+  }
+  const items =
+    Array.isArray(data.items) && data.items.length ? data.items : experiences
+
   return (
     <section id="experience" className="py-20 relative overflow-hidden">
       {/* Section background */}
@@ -126,11 +138,8 @@ export default function PremiumTimeline() {
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-20">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">Career Journey</h2>
-            <p className="text-xl text-white/60 max-w-3xl mx-auto">
-              5+ years of progressive experience building reliable infrastructure,
-              leading teams, and delivering production-grade solutions at scale.
-            </p>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4">{data.heading}</h2>
+            <p className="text-xl text-white/60 max-w-3xl mx-auto">{data.intro}</p>
           </div>
         </ScrollReveal>
 
@@ -156,7 +165,7 @@ export default function PremiumTimeline() {
             viewport={{ once: true }}
             className="space-y-12 lg:space-y-20"
           >
-            {experiences.map((exp, index) => {
+            {items.map((exp: any, index: number) => {
               const isLeft = index % 2 === 0
               const containerClass = isLeft
                 ? 'lg:flex lg:flex-row-reverse'
@@ -252,7 +261,7 @@ export default function PremiumTimeline() {
                             Key Achievements
                           </p>
                           <ul className="space-y-2">
-                            {exp.achievements.slice(0, 4).map((achievement) => (
+                            {exp.achievements.slice(0, 4).map((achievement: string) => (
                               <li
                                 key={achievement}
                                 className="text-xs text-white/60 flex gap-2 leading-relaxed"
@@ -276,7 +285,7 @@ export default function PremiumTimeline() {
 
                         {/* Technologies */}
                         <div className="flex flex-wrap gap-2">
-                          {exp.technologies.slice(0, 5).map((tech) => (
+                          {exp.technologies.slice(0, 5).map((tech: string) => (
                             <motion.span
                               key={tech}
                               whileHover={{ scale: 1.05, y: -2 }}
@@ -335,14 +344,9 @@ export default function PremiumTimeline() {
               <div className="relative z-10">
                 <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
                   <span className="text-3xl">🎯</span>
-                  Engineering Philosophy
+                  {data.philosophyTitle}
                 </h3>
-                <p className="text-white/70 leading-relaxed">
-                  Throughout my journey from IT support to senior DevOps engineer, I've maintained a consistent focus on
-                  automation, reliability, and scalability. Every role has contributed to my expertise in building
-                  production-grade infrastructure that powers mission-critical systems. From leading teams to architecting
-                  cloud platforms, I bring a comprehensive understanding of the entire infrastructure lifecycle.
-                </p>
+                <p className="text-white/70 leading-relaxed">{data.philosophyText}</p>
               </div>
             </motion.div>
           </ScrollReveal>

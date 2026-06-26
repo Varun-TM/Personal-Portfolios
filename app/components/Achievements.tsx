@@ -1,9 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { TrendingUp, Users, Package, Award } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { TiltCard, ScrollReveal } from './VisualEnhancements'
+import { getIcon } from '@/lib/icons'
 
 const AchievementCounter = ({ end, label, icon: Icon, delay = 0 }: any) => {
   const [count, setCount] = useState(0)
@@ -64,34 +64,42 @@ const AchievementCounter = ({ end, label, icon: Icon, delay = 0 }: any) => {
   )
 }
 
-const achievements = [
-  {
-    icon: TrendingUp,
-    metric: 25,
-    label: 'AWS Cost Reduction',
-    description: 'Implemented cost optimization strategies reducing infrastructure spending',
-  },
-  {
-    icon: Package,
-    metric: 40,
-    label: 'Faster Deployments',
-    description: 'Accelerated deployment velocity through CI/CD pipeline automation',
-  },
-  {
-    icon: Users,
-    metric: 50,
-    label: 'Servers Migrated',
-    description: 'Successfully migrated 50+ servers with zero data loss',
-  },
-  {
-    icon: Award,
-    metric: 5,
-    label: 'Years Experience',
-    description: 'Progressive experience in cloud infrastructure and DevOps',
-  },
+const defaultCounters = [
+  { icon: 'TrendingUp', metric: 25, label: 'AWS Cost Reduction' },
+  { icon: 'Package', metric: 40, label: 'Faster Deployments' },
+  { icon: 'Users', metric: 50, label: 'Servers Migrated' },
+  { icon: 'Award', metric: 5, label: 'Years Experience' },
 ]
 
-export default function Achievements() {
+const defaultAccomplishments = [
+  { title: 'Infrastructure Cost Optimization', items: ['Reduced AWS infrastructure costs by 25% through intelligent EC2 right-sizing', 'Optimized CloudFront delivery paths for 30% latency reduction', 'Implemented reserved instances and auto-scaling cost controls'] },
+  { title: 'Deployment & Performance', items: ['Increased deployment speed by 40% via automated CI/CD pipelines', 'Implemented GitHub Actions and Jenkins for multi-language applications', 'Achieved 99.9% uptime for mission-critical systems'] },
+  { title: 'Infrastructure & Scale', items: ['Led seamless migration of 50+ servers and databases with zero data loss', 'Designed multi-tier application architecture (LB, app, DB)', 'Managed 200+ cloud resources across multiple environments'] },
+  { title: 'Automation & Efficiency', items: ['Reduced manual operational overhead by 60% through automation', 'Developed Python and Bash scripts for infrastructure provisioning', 'Implemented infrastructure-as-code with 50% setup time reduction'] },
+]
+
+export default function Achievements({ content = {} }: { content?: any }) {
+  const data = {
+    heading: 'Key Achievements',
+    intro:
+      'Measurable impact across infrastructure optimization, automation, and system reliability.',
+    accomplishmentsTitle: 'Major Accomplishments',
+    securityTitle: 'Security & Compliance Initiatives',
+    securityText:
+      'Enhanced cloud security and compliance by enforcing AWS WAF rules, implementing VPNs, and securing VPC networking policies. Implemented Linux security hardening, access controls, and firewall rules for production environments.',
+    securityTags: ['AWS WAF', 'VPC Security', 'SSL/TLS', 'Access Control', 'Firewall Rules', 'VPN Tunnels', 'IAM Policies', 'Hardening'],
+    ...content,
+  }
+  const achievements =
+    Array.isArray(data.counters) && data.counters.length ? data.counters : defaultCounters
+  const accomplishments =
+    Array.isArray(data.accomplishments) && data.accomplishments.length
+      ? data.accomplishments
+      : defaultAccomplishments
+  const securityTags: string[] =
+    Array.isArray(data.securityTags) && data.securityTags.length
+      ? data.securityTags
+      : ['AWS WAF', 'VPC Security', 'SSL/TLS', 'Access Control', 'Firewall Rules', 'VPN Tunnels', 'IAM Policies', 'Hardening']
   return (
     <section id="achievements" className="py-20 relative overflow-hidden">
       {/* Section background */}
@@ -125,11 +133,8 @@ export default function Achievements() {
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">Key Achievements</h2>
-            <p className="text-xl text-white/60 max-w-3xl mx-auto">
-              Measurable impact across infrastructure optimization, automation,
-              and system reliability.
-            </p>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4">{data.heading}</h2>
+            <p className="text-xl text-white/60 max-w-3xl mx-auto">{data.intro}</p>
           </div>
         </ScrollReveal>
 
@@ -140,12 +145,12 @@ export default function Achievements() {
           viewport={{ once: true }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16"
         >
-          {achievements.map((achievement, index) => (
+          {achievements.map((achievement: any, index: number) => (
             <AchievementCounter
               key={achievement.label}
               end={achievement.metric}
               label={achievement.label}
-              icon={achievement.icon}
+              icon={getIcon(achievement.icon)}
               delay={index * 0.15}
             />
           ))}
@@ -181,43 +186,10 @@ export default function Achievements() {
               className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5"
             />
 
-            <h3 className="text-2xl font-bold mb-8 relative z-10">Major Accomplishments</h3>
+            <h3 className="text-2xl font-bold mb-8 relative z-10">{data.accomplishmentsTitle}</h3>
 
             <div className="grid md:grid-cols-2 gap-6 relative z-10">
-              {[
-                {
-                  title: 'Infrastructure Cost Optimization',
-                  items: [
-                    'Reduced AWS infrastructure costs by 25% through intelligent EC2 right-sizing',
-                    'Optimized CloudFront delivery paths for 30% latency reduction',
-                    'Implemented reserved instances and auto-scaling cost controls',
-                  ],
-                },
-                {
-                  title: 'Deployment & Performance',
-                  items: [
-                    'Increased deployment speed by 40% via automated CI/CD pipelines',
-                    'Implemented GitHub Actions and Jenkins for multi-language applications',
-                    'Achieved 99.9% uptime for mission-critical systems',
-                  ],
-                },
-                {
-                  title: 'Infrastructure & Scale',
-                  items: [
-                    'Led seamless migration of 50+ servers and databases with zero data loss',
-                    'Designed multi-tier application architecture (LB, app, DB)',
-                    'Managed 200+ cloud resources across multiple environments',
-                  ],
-                },
-                {
-                  title: 'Automation & Efficiency',
-                  items: [
-                    'Reduced manual operational overhead by 60% through automation',
-                    'Developed Python and Bash scripts for infrastructure provisioning',
-                    'Implemented infrastructure-as-code with 50% setup time reduction',
-                  ],
-                },
-              ].map((section, index) => (
+              {accomplishments.map((section: any, index: number) => (
                 <motion.div
                   key={section.title}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
@@ -227,7 +199,7 @@ export default function Achievements() {
                 >
                   <h4 className="font-bold text-lg mb-4 text-primary">{section.title}</h4>
                   <ul className="space-y-3">
-                    {section.items.map((item) => (
+                    {section.items.map((item: string) => (
                       <li key={item} className="flex gap-3 text-white/70 text-sm leading-relaxed">
                         <motion.span
                           animate={{ scale: [1, 1.3, 1] }}
@@ -280,14 +252,10 @@ export default function Achievements() {
               className="absolute inset-0 bg-gradient-to-br from-error/5 to-warning/5"
             />
 
-            <h3 className="text-xl font-bold mb-4 relative z-10">Security & Compliance Initiatives</h3>
-            <p className="text-white/70 mb-4 relative z-10">
-              Enhanced cloud security and compliance by enforcing AWS WAF rules, implementing
-              VPNs, and securing VPC networking policies. Implemented Linux security hardening,
-              access controls, and firewall rules for production environments.
-            </p>
+            <h3 className="text-xl font-bold mb-4 relative z-10">{data.securityTitle}</h3>
+            <p className="text-white/70 mb-4 relative z-10">{data.securityText}</p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 relative z-10">
-              {['AWS WAF', 'VPC Security', 'SSL/TLS', 'Access Control', 'Firewall Rules', 'VPN Tunnels', 'IAM Policies', 'Hardening'].map((item, i) => (
+              {securityTags.map((item: string, i: number) => (
                 <motion.div
                   key={item}
                   whileHover={{ scale: 1.05, y: -2 }}
